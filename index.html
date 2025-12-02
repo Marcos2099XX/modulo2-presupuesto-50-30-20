@@ -111,11 +111,13 @@
       border-radius: var(--radius-md);
       font-size: 0.95rem;
       color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .instructions i {
       color: var(--primary);
-      margin-right: 8px;
     }
 
     main {
@@ -171,29 +173,60 @@
     .card h2 {
       margin: 0 0 10px;
       font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card h2 i {
+      font-size: 0.95rem;
+      color: var(--primary);
     }
 
     .card p {
       margin: 0 0 10px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 12px;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(148,163,184,.18);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-tag i {
+      font-size: 0.75rem;
     }
 
     .info-card {
       background: rgba(124,156,255,.1);
       border-left: 4px solid var(--primary);
-      padding: 12px 14px;
+      padding: 10px 12px;
       border-radius: var(--radius-sm);
-      margin: 12px 0 16px;
+      margin: 10px 0 14px;
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     .info-card i {
       color: var(--primary);
       margin-top: 3px;
+      font-size: 0.85rem;
     }
 
     .info-card strong {
@@ -209,7 +242,35 @@
     }
 
     .list-compact li {
+      margin-bottom: 3px;
+    }
+
+    .highlight-badges {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 8px;
+      margin: 12px 0 4px;
+    }
+
+    .highlight-badge {
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      font-size: 0.78rem;
+      background: rgba(15,23,42,.8);
+      border: 1px solid rgba(148,163,184,.35);
+    }
+
+    .highlight-badge span {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
       margin-bottom: 2px;
+    }
+
+    .highlight-badge strong {
+      font-size: 0.9rem;
     }
 
     .btn-primary {
@@ -243,31 +304,57 @@
 
     .hint {
       margin-top: 10px;
-      font-size: 0.83rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .mini-section-title {
+      margin: 10px 0 4px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 8px;
+    }
+
+    .chip {
+      font-size: 0.76rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(148,163,184,.14);
       color: var(--muted);
     }
 
     .padlet-wrapper {
-      margin-top: 14px;
+      margin-top: 10px;
     }
 
     .padlet-embed {
-      border:1px solid rgba(0,0,0,0.1);
-      border-radius:2px;
+      border:1px dashed rgba(148,163,184,.5);
+      border-radius: var(--radius-sm);
       box-sizing:border-box;
-      overflow:hidden;
       position:relative;
-      width:480px;
-      height:260px;
+      width:100%;
+      min-height:120px;
       max-width:100%;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:0.85rem;
+      font-size:0.82rem;
       color:var(--muted);
       text-align:center;
       padding:12px;
       background: rgba(15,23,42,.6);
+    }
+
+    .padlet-embed i {
+      margin-right: 6px;
+      color: var(--primary);
     }
   </style>
 </head>
@@ -280,49 +367,71 @@
       </div>
       <h1 class="title">Actividad: Presupuesto 50/30/20</h1>
       <p class="subtitle">
-        Identifica tus ingresos mensuales, clasifica tus gastos y diseña una versión mejorada de tu presupuesto usando la regla 50/30/20.
+        Calcula cómo se reparte tu dinero en necesidades, gustos y ahorro, y planea dos cambios para el próximo mes.
       </p>
     </header>
 
     <main>
       <section class="instructions" aria-label="Instrucciones generales de la actividad">
         <i class="fas fa-info-circle"></i>
-        <strong>Instrucciones generales:</strong> esta actividad se trabaja usando una plantilla en Google Sheets
-        para hacer tus cálculos y una reflexión final escrita sobre los cambios que quieres intentar el próximo mes.
+        <div>
+          <strong>Usa la plantilla + una mini reflexión.</strong> Primero llena tu hoja de cálculo, después responde unas preguntas cortas sobre tus gastos.
+        </div>
       </section>
 
       <nav class="steps-indicator" aria-label="Pasos de la actividad">
-        <div class="step-pill step-pill--active">Paso 1 · Plantilla 50/30/20</div>
-        <div class="step-pill">Paso 2 · Reflexión y ajustes</div>
+        <div class="step-pill step-pill--active">1 · Completa tu plantilla</div>
+        <div class="step-pill">2 · Ajusta y reflexiona</div>
       </nav>
 
       <div class="layout">
-        <!-- LADO IZQUIERDO: PLANTILLA 50/30/20 -->
+        <!-- LADO IZQUIERDO -->
         <section class="card" aria-labelledby="paso1-titulo">
-          <h2 id="paso1-titulo">Paso 1: Usa la plantilla de presupuesto 50/30/20</h2>
-          <p>
-            Vas a trabajar con una hoja de cálculo para aterrizar tu presupuesto. Primero identificarás tus ingresos
-            mensuales y después clasificarás tus gastos en necesidades, gustos y ahorro/metas.
+          <h2 id="paso1-titulo">
+            <i class="fas fa-sheet-plastic"></i>
+            Paso 1: Llena tu presupuesto 50/30/20
+          </h2>
+
+          <div class="pill-row">
+            <span class="pill-tag"><i class="fas fa-wallet"></i> Ingresos</span>
+            <span class="pill-tag"><i class="fas fa-list-ul"></i> Gastos</span>
+            <span class="pill-tag"><i class="fas fa-percent"></i> 50/30/20</span>
+          </div>
+
+          <p style="margin-bottom: 6px;">
+            Solo necesitas tus números de un mes típico. No tiene que ser perfecto, solo honesto.
           </p>
 
+          <div class="highlight-badges">
+            <div class="highlight-badge">
+              <span>1. Ingreso mensual</span>
+              <strong>$ ____</strong>
+            </div>
+            <div class="highlight-badge">
+              <span>2. Necesidades (50%)</span>
+              <strong>$ ____</strong>
+            </div>
+            <div class="highlight-badge">
+              <span>3. Gustos (30%)</span>
+              <strong>$ ____</strong>
+            </div>
+          </div>
+          <div class="highlight-badges" style="grid-template-columns: repeat(1, minmax(0,1fr)); margin-top: 6px;">
+            <div class="highlight-badge">
+              <span>4. Ahorro y metas (20%)</span>
+              <strong>$ ____</strong>
+            </div>
+          </div>
+
           <div class="info-card">
-            <i class="fas fa-file-excel" aria-hidden="true"></i>
+            <i class="fas fa-circle-check" aria-hidden="true"></i>
             <div>
-              <strong>¿Cómo usar la plantilla?</strong><br>
-              1. Haz clic en el botón de abajo para abrir la plantilla en Google Sheets.<br>
-              2. En la parte superior, ve a <em>Archivo &gt; Hacer una copia</em> para guardarla en tu propio Drive.<br>
-              3. En la plantilla encontrarás espacios para:
+              <strong>En la plantilla vas a:</strong>
               <ul class="list-compact">
-                <li><strong>Ingreso mensual:</strong> anota cuánto dinero recibes en un mes típico (apoyo de tus padres, beca, trabajo, ventas, propinas u otros ingresos). Si varía, usa un promedio aproximado.</li>
-                <li><strong>Tus “tres grandes” 50/30/20:</strong> la hoja te ayudará a calcular:
-                  <br>• 50% – Necesidades (renta, transporte, comida básica, servicios, colegiatura, etc.).
-                  <br>• 30% – Gustos/deseos (salidas, apps, entretenimiento, antojos, compras de gusto).
-                  <br>• 20% – Ahorro y metas (emergencias, viaje, gadget, pagar una deuda, etc.).
-                </li>
-                <li><strong>Lista de gastos:</strong> anota los gastos que normalmente tienes en un mes (renta, transporte, comida, teléfono, internet, plataformas, salidas, snacks, etc.). Sé lo más sincero posible.</li>
-                <li><strong>Clasificación 50/30/20:</strong> coloca cada gasto en la columna que corresponda:
-                  “Necesidades”, “Gustos/deseos” o “Ahorro/metas”, y suma cuánto gastas en cada categoría.
-                </li>
+                <li>Anotar tu ingreso mensual total.</li>
+                <li>Ver automáticamente 50% / 30% / 20% calculados.</li>
+                <li>Hacer una lista rápida de tus gastos del mes.</li>
+                <li>Marcar si cada gasto es necesidad, gusto o ahorro/meta.</li>
               </ul>
             </div>
           </div>
@@ -338,60 +447,50 @@
           </a>
 
           <p class="hint">
-            Tip: tómate tu tiempo para llenar la plantilla. Entre más honesto seas con tus números,
-            más claro será lo que puedes ajustar en tu presupuesto.
+            Truco rápido: rellena primero ingresos y gastos grandes (renta, transporte, comida) y al final agrega los detalles (snacks, apps, antojos).
           </p>
         </section>
 
-        <!-- LADO DERECHO: REFLEXIÓN + AJUSTES -->
+        <!-- LADO DERECHO -->
         <aside class="card" aria-labelledby="paso2-titulo">
-          <h2 id="paso2-titulo">Paso 2: Compara, ajusta y reflexiona</h2>
+          <h2 id="paso2-titulo">
+            <i class="fas fa-pen-to-square"></i>
+            Paso 2: Ajusta y escribe tu mini reflexión
+          </h2>
+
           <p>
-            Cuando termines de capturar tus datos, revisa los totales de cada categoría y compáralos con el ideal 50/30/20.
-            Después, diseña una versión mejorada de tu presupuesto para el próximo mes.
+            Con los totales de tu plantilla, compara tu realidad con el 50/30/20 y planea tus cambios.
           </p>
 
+          <div class="mini-section-title">1. Revisa tus porcentajes</div>
+          <div class="chips">
+            <span class="chip">¿Más del 50% en necesidades?</span>
+            <span class="chip">¿Gustos &gt; 30%?</span>
+            <span class="chip">¿Cuánto ahorras en realidad?</span>
+          </div>
+
           <div class="info-card">
-            <i class="fas fa-scale-balanced" aria-hidden="true"></i>
+            <i class="fas fa-sliders" aria-hidden="true"></i>
             <div>
-              <strong>Analiza tu realidad vs. el 50/30/20:</strong>
+              <strong>2. Ajusta tu próximo mes:</strong>
               <ul class="list-compact">
-                <li>¿Estás gastando más del 50&nbsp;% en necesidades? ¿En qué se te va la mayor parte?</li>
-                <li>¿Tus gustos y deseos se están comiendo más del 30&nbsp;%? ¿En qué tipo de cosas?</li>
-                <li>¿Cuánto estás destinando realmente a ahorro/metas? ¿Se acerca al 20&nbsp;% o es menos?</li>
+                <li>Elige al menos <strong>dos cambios concretos</strong> que vas a probar.</li>
+                <li>Ejemplos: quitar una app, bajar salidas, separar una cantidad fija para ahorro.</li>
               </ul>
             </div>
           </div>
 
-          <div class="info-card">
-            <i class="fas fa-pen" aria-hidden="true"></i>
-            <div>
-              <strong>Ajusta tu presupuesto del próximo mes:</strong>
-              <ul class="list-compact">
-                <li>Decide qué gastos podrías bajar, recortar o eliminar.</li>
-                <li>Define cuánto vas a destinar a <strong>Necesidades</strong>, <strong>Gustos</strong> y <strong>Ahorro/metas</strong> (aunque no quede perfecto al 50/30/20).</li>
-                <li>Escribe al menos <strong>dos cambios concretos</strong> que te comprometes a probar, por ejemplo:
-                  <br>• “Bajar una plataforma de streaming.”
-                  <br>• “Limitar salidas a X veces por mes.”
-                  <br>• “Separar $_____ cada quincena para ahorrar.”
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <p style="font-size:0.9rem; color:var(--muted); margin-top:10px;">
-            Finalmente, redacta una <strong>reflexión breve (4–6 renglones)</strong> donde respondas:
-          </p>
+          <div class="mini-section-title">3. Escribe tu reflexión (4–6 renglones)</div>
           <ul class="list-compact">
-            <li>¿Qué fue lo que más te sorprendió al ver tus gastos?</li>
-            <li>¿Qué cambio crees que te va a costar más trabajo, y por qué vale la pena intentarlo?</li>
+            <li>¿Qué te sorprendió más al ver tus gastos?</li>
+            <li>¿Qué cambio se te hará más difícil?</li>
+            <li>¿Por qué vale la pena intentarlo aunque cueste trabajo?</li>
           </ul>
 
           <div class="padlet-wrapper" aria-label="Foro o espacio de reflexión">
             <div class="padlet-embed">
-              <!-- Si tu profesor(a) lo indica, aquí puedes incrustar un Padlet u otro foro.
-                   Solo reemplaza este bloque por el iframe correspondiente. -->
-              Aquí aparecerá el foro o espacio donde compartirás una versión breve de tu reflexión.
+              <i class="fas fa-comments"></i>
+              Aquí puedes incrustar un Padlet o foro (si tu profe lo indica) para compartir una versión corta de tu reflexión.
             </div>
           </div>
         </aside>
